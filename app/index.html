@@ -9,7 +9,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -25,30 +25,179 @@
     <div class="container">
       <div class="header">
         <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
+          <li><a href="https://github.com/fguillen/GeolocationHTML5">Github repo</a></li>
+          <li><a href="mailto:fguillen.mail@gmail.com">Contact</a></li>
         </ul>
         <h3 class="text-muted">GeolocationHTML5</h3>
       </div>
 
       <div class="jumbotron">
-        <h1>'Allo, 'Allo!</h1>
-        <p class="lead">Always a pleasure scaffolding your apps.</p>
-        <p><a class="btn btn-lg btn-success" href="#">Splendid! <span class="glyphicon glyphicon-ok"></span></a></p>
+        <div class="text-left">
+          <h1>Checking HTML5 Geolocation</h1>
+          <p class="lead">Always a pleasure scaffolding your apps.</p>
+
+
+          <h3>Position Options</h3>
+          <form class="form-horizontal" id="geolocalize_me_form">
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" id="high_accuracy_option"> Enable High Accuracy
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="timeout_option" class="col-sm-2 control-label">Timeout</label>
+              <div class="col-sm-10">
+                <div class="input-group">
+                  <input type="text" class="form-control" id="timeout_option" placeholder="10000">
+                  <span class="input-group-addon">milliseconds</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="maximum_age_option" class="col-sm-2 control-label">Max Age</label>
+              <div class="col-sm-10">
+                <div class="input-group">
+                  <input type="text" class="form-control" id="maximum_age_option" placeholder="0">
+                  <span class="input-group-addon">milliseconds</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-lg btn-success">Geolocalize me!
+                  <span class="glyphicon glyphicon-ok status_component status_component_success"></span>
+                  <span class="glyphicon glyphicon-remove status_component status_component_error"></span>
+                  <span class="glyphicon glyphicon-music status_component status_component_geolocalizing"></span>
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <h3>Status</h3>
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label for="status_field" class="col-sm-2 control-label">Status</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="status_field" placeholder="">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="error_message_field" class="col-sm-2 control-label">Error message</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="error_message_field" placeholder="">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="error_code_field" class="col-sm-2 control-label">Error Code</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="error_code_field" placeholder="">
+              </div>
+            </div>
+          </form>
+
+          <h3>Results</h3>
+          <form class="form-horizontal">
+
+
+
+            <div class="form-group">
+              <label for="latitude_field" class="col-sm-2 control-label">Latitude</label>
+              <div class="col-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon glyphicon glyphicon-map-marker"></span>
+                  <input type="text" class="form-control" id="latitude_field" placeholder="00.0000000">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="longitude_field" class="col-sm-2 control-label">Longitude</label>
+              <div class="col-sm-10">
+                <div class="input-group">
+                  <span class="input-group-addon glyphicon glyphicon-map-marker"></span>
+                  <input type="text" class="form-control" id="longitude_field" placeholder="00.0000000">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="accuracy_field" class="col-sm-2 control-label">Accuracy</label>
+              <div class="col-sm-10">
+                <div class="input-group">
+                  <input type="text" class="form-control" id="accuracy_field" placeholder="0">
+                  <span class="input-group-addon">meters</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="altitude_field" class="col-sm-2 control-label">Altitude</label>
+              <div class="col-sm-10">
+                <div class="input-group">
+                  <input type="text" class="form-control" id="altitude_field" placeholder="0">
+                  <span class="input-group-addon">meters</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="altitude_accuracy_field" class="col-sm-2 control-label">Altitude Accuracy</label>
+              <div class="col-sm-10">
+                <div class="input-group">
+                  <input type="text" class="form-control" id="altitude_accuracy_field" placeholder="0">
+                  <span class="input-group-addon">meters</span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="heading_field" class="col-sm-2 control-label">Heading</label>
+              <div class="col-sm-10">
+                <div class="input-group">
+                  <input type="text" class="form-control" id="heading_field" placeholder="0">
+                  <span class="input-group-addon">º</span>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="speed_field" class="col-sm-2 control-label">Speed</label>
+              <div class="col-sm-10">
+                <div class="input-group">
+                  <input type="text" class="form-control" id="speed_field" placeholder="0">
+                  <span class="input-group-addon">m/s</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="timestamp_field" class="col-sm-2 control-label">Timestamp</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="timestamp_field" placeholder="">
+              </div>
+            </div>
+
+          </form>
+
+        </div>
       </div>
+
+
 
       <div class="row marketing">
         <div class="col-lg-6">
           <h4>HTML5 Boilerplate</h4>
           <p>HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.</p>
 
-
-
           <h4>Bootstrap</h4>
           <p>Sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.</p>
-
-
         </div>
       </div>
 
@@ -61,6 +210,8 @@
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
+    <script src="bower_components/modernizr/modernizr.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

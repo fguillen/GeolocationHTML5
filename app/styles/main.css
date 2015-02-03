@@ -87,3 +87,7 @@ body {
     border-bottom: 0;
   }
 }
+
+
+/* SimpleGeoApp */
+ .status_component { display: none; }
