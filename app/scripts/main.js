@@ -1,4 +1,4 @@
-console.log("Geolocalize me! v0.0.1");
+console.log("Geolocalize me! v0.0.3");
 
 var SimpleGeoApp = {};
 
@@ -52,6 +52,14 @@ SimpleGeoApp.geolocation_sucess = function(position){
   $("#timestamp_field").val(new Date(position.timestamp).toString());
 
   SimpleGeoApp.show_in_map(position.coords.latitude, position.coords.longitude);
+
+  if($("#google_api_key_field").val().length > 0) {
+    SimpleGeoApp.get_address(
+      $("#google_api_key_field").val(),
+      position.coords.latitude,
+      position.coords.longitude
+    )
+  }
 }
 
 SimpleGeoApp.geolocation_error = function(position_error){
@@ -91,6 +99,25 @@ SimpleGeoApp.show_in_map = function(latitude, longitude){
       map: map,
       title: "Marker"
     });
+}
+
+SimpleGeoApp.get_address = function(api_key, latitude, longitude){
+  console.log("get_address()", api_key, latitude, longitude);
+
+  $.ajax({
+    type: "GET",
+    dataType: "json",
+    url: "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + latitude + "," + longitude + "&key=" + api_key,
+    data: {},
+    success: function(data) {
+      console.log('get_address(): success', data);
+      var data_formatted = JSON.stringify(data,null,2);
+      $('#address_field').html(data_formatted);
+    },
+    error: function () {
+      console.log('get_address(): error');
+    }
+});
 }
 
 
