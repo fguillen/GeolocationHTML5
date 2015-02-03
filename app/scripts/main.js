@@ -78,6 +78,12 @@ SimpleGeoApp.set_status = function(status){
 
   $(".status_component").css("display","none");
   $(".status_component_" + SimpleGeoApp.status).css("display","inline");
+
+  if(SimpleGeoApp.status == "geolocalizing") {
+    $("#request_permission_text").show();
+  } else {
+    $("#request_permission_text").hide();
+  }
 }
 
 SimpleGeoApp.show_in_map = function(latitude, longitude){
