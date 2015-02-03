@@ -91,3 +91,4 @@ body {
 
 /* SimpleGeoApp */
  .status_component { display: none; }
+ #map_canvas { height: 300px; }

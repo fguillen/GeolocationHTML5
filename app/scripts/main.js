@@ -50,6 +50,8 @@ SimpleGeoApp.geolocation_sucess = function(position){
   $("#speed_field").val(position.coords.speed);
 
   $("#timestamp_field").val(new Date(position.timestamp).toString());
+
+  SimpleGeoApp.show_in_map(position.coords.latitude, position.coords.longitude);
 }
 
 SimpleGeoApp.geolocation_error = function(position_error){
@@ -70,6 +72,30 @@ SimpleGeoApp.set_status = function(status){
   $(".status_component_" + SimpleGeoApp.status).css("display","inline");
 }
 
+SimpleGeoApp.show_in_map = function(latitude, longitude){
+  console.log("show_in_map()", latitude, longitude);
+
+  var myLatlng = new google.maps.LatLng(latitude, longitude);
+
+  var mapOptions =
+    {
+      zoom: 15,
+      center: myLatlng
+    }
+
+  var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+
+  var marker =
+    new google.maps.Marker({
+      position: myLatlng,
+      map: map,
+      title: "Marker"
+    });
+}
+
 
 SimpleGeoApp.set_status("stand_by");
-$("#geolocalize_me_form").on("submit", SimpleGeoApp.get_location);
+$("#geolocalize_me_form").on("submit", function(event){
+  SimpleGeoApp.get_location();
+  event.preventDefault();
+});
